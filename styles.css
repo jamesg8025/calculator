@@ -1,0 +1,34 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #BEBEBE;
+    margin: 0;
+    min-height: 100vh;
+
+}
+
+#calc-container {
+    background-color: black;
+    width: 400px;
+    height: 700px;
+
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    /* left: 0; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    background-color: #404040;
+    color: white;
+    padding: 1em;
+    text-align: center;
+}
