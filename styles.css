@@ -16,27 +16,33 @@ body{
     border: 2px solid #404040;
     border-radius: 10px;
     padding: 10px;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
 }
 
 #numberDisplay {
-    width: 380px;
-    height: 100px;
-    text-align: right;
-    background-color: #303030;
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
     padding: 10px;
-    padding-bottom: 20px;
-
+    word-wrap: break-word; /* makes number wrap if too long */
+    word-break: break-all;
 }
 
-#buttons-container {
+#numberDisplay .previous-operand {
+    color: rgba(2555, 255, 255, .75);
+    font-size: 1.5rem;
+}
+
+#numberDisplay .current-operand {
+    color: rgba(2555, 255, 255);
+    font-size: 2.5rem;
+}
+
+#calc-container {
     display: grid;
     justify-content: center;
     align-content: center;
-    /* min-height: 100vh; */
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: minmax(120px, auto) repeat(5, 100px);
     outline: none;
@@ -46,7 +52,7 @@ body{
     grid-column: span 2;
 }
 
-#buttons-container > button {
+#calc-container > button {
     cursor: pointer;
     font-size: 2rem;
     border-radius: 50%;
@@ -61,7 +67,7 @@ body{
     background-color: orange !important;
 }
 
-#buttons-container > button:hover {
+#calc-container > button:hover {
     filter: brightness(150%);
 }
 
