@@ -35,22 +35,34 @@ body{
 #buttons-container {
     display: grid;
     justify-content: center;
-    align-items: center;
+    align-content: center;
     /* min-height: 100vh; */
-    grid-template-columns: repeat(4, 80px);
+    grid-template-columns: repeat(4, 100px);
     grid-template-rows: minmax(120px, auto) repeat(5, 100px);
     outline: none;
+}
+
+.double {
+    grid-column: span 2;
 }
 
 #buttons-container > button {
     cursor: pointer;
     font-size: 2rem;
     border-radius: 50%;
-    background-color: ;
+    background-color: darkslategrey;
+}
+
+.light-grey {
+    background-color: grey !important;
+}
+
+.orange {
+    background-color: orange !important;
 }
 
 #buttons-container > button:hover {
-
+    filter: brightness(150%);
 }
 
 a {
