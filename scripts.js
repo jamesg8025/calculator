@@ -26,3 +26,18 @@ function handleNumber(number) {
         currentOperandTextElement.textContent = currentNumber;
     };
 };
+
+// function for operation buttons
+operationButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        handleOperator(e.target.textContent);
+    });
+});
+
+function handleOperator(op) {
+    operator = op;
+    previousNumber = currentNumber;
+    previousOperandTextElement.textContent = previousNumber;
+    currentNumber = '';
+    currentOperandTextElement.textContent = '';
+}
