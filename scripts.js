@@ -5,8 +5,13 @@ let operator = '';
 
 const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll('[data-operation]');
+
 const equalsButton = document.querySelector('[data-equals]');
+equalsButton.addEventListener('click', calculate);
+
+
 const deleteButton = document.querySelector('[data-delete]');
+
 const allClearButton = document.querySelector('[data-all-clear]');
 
 const previousOperandTextElement = document.querySelector('[data-previous-operand]');
@@ -27,17 +32,51 @@ function handleNumber(number) {
     };
 };
 
-// function for operation buttons
 operationButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
         handleOperator(e.target.textContent);
     });
 });
 
+// function for operation buttons
 function handleOperator(op) {
     operator = op;
     previousNumber = currentNumber;
     previousOperandTextElement.textContent = previousNumber + ' ' + operator;
     currentNumber = '';
     currentOperandTextElement.textContent = '';
+};
+
+function calculate() {
+    // convert into numbers
+    previousNumber = Number(previousNumber);
+    currentNumber = Number(currentNumber);
+
+    if (operator === '+') {
+        previousNumber += currentNumber;
+    } else if (operator === '-') {
+        previousNumber -= currentNumber;
+    } else if (operator === '*') {
+        previousNumber *= currentNumber;
+    } else if (operator === '÷') {
+        if (currentNumber <= 0) {
+            previousNumber = 'Error'
+            displayResults();
+            return;
+        }
+        previousNumber /= currentNumber;
+    }
+    // convert back to string
+    previousNumber = previousNumber.toString();
+    displayResults();
+};
+
+function displayResults() {
+    previousOperandTextElement.textContent = '';
+    operator = '';
+    if (previousNumber.length <= 12) {
+        currentOperandTextElement.textContent = previousNumber;
+    } else {
+        currentOperandTextElement.textContent = previousNumber.slice(0,12) + '...';
+    }
 }
