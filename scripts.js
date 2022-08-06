@@ -22,6 +22,7 @@ equalsButton.addEventListener('click', () => {
 
 
 const deleteButton = document.querySelector('[data-delete]');
+deleteButton.addEventListener('click', handleDelete);
 
 const allClearButton = document.querySelector('[data-all-clear]');
 allClearButton.addEventListener('click', allClear);
@@ -150,4 +151,21 @@ function handleKeyPress(e) {
     if (e.key === '.') {
         addDecimal();
     }
-}
+    if (e.key === 'Backspace') {
+        handleDelete();
+    }
+};
+
+function handleDelete() {
+    if (currentNumber != '') {
+        currentNumber = currentNumber.slice(0, -1);
+        currentOperandTextElement.textContent = currentNumber;
+        if (currentNumber === '') {
+            currentNumber = '';
+        }
+    }
+    if (currentNumber === '' && previousNumber !== '' && operator === '') {
+        previousNumber = previousNumber.slice(0, -1);
+        currentOperandTextElement.textContent = previousNumber;
+    }
+};
