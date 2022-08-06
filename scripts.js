@@ -7,7 +7,11 @@ const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll('[data-operation]');
 
 const equalsButton = document.querySelector('[data-equals]');
-equalsButton.addEventListener('click', calculate);
+equalsButton.addEventListener('click', () => {
+    if (currentNumber != '' && previousNumber != '') {
+        calculate();
+    }
+});
 
 
 const deleteButton = document.querySelector('[data-delete]');
