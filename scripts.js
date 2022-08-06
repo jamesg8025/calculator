@@ -66,10 +66,15 @@ function calculate() {
         }
         previousNumber /= currentNumber;
     }
+    previousNumber = roundNumbers(previousNumber);
     // convert back to string
     previousNumber = previousNumber.toString();
     displayResults();
 };
+
+function roundNumbers(number) {
+    return Math.round(number * 100000) / 100000;
+}
 
 function displayResults() {
     previousOperandTextElement.textContent = '';
@@ -79,4 +84,4 @@ function displayResults() {
     } else {
         currentOperandTextElement.textContent = previousNumber.slice(0,12) + '...';
     }
-}
+};
