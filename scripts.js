@@ -3,6 +3,8 @@ let currentNumber = '';
 let previousNumber = '';
 let operator = '';
 
+window.addEventListener('keydown', handleKeyPress);
+
 const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll('[data-operation]');
 
@@ -129,3 +131,23 @@ function addDecimal() {
         currentOperandTextElement.textContent = currentNumber;
     }
 };
+
+function handleKeyPress(e) {
+    e.preventDefault()
+    if(e.key >= 0 && e.key <= 9) {
+        handleNumber(e.key);
+    }
+    if (e.key === 'Enter' || 
+    (e.key === '=' && currentNumber != '' && previousNumber != '')) {
+        calculate();
+    }
+    if (e.key === '+' || e.key === '-' || e.key === '/') {
+        handleOperator(e.key);
+    }
+    if (e.key === '*') {
+        handleOperator('*');
+    }
+    if (e.key === '.') {
+        addDecimal();
+    }
+}
