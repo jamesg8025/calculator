@@ -5,6 +5,7 @@ let operator = '';
 
 const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll('[data-operation]');
+const decimalButton = document.querySelector('[data-decimal]');
 
 const equalsButton = document.querySelector('[data-equals]');
 equalsButton.addEventListener('click', () => {
