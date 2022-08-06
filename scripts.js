@@ -31,6 +31,11 @@ numberButtons.forEach(btn => {
 });
 
 function handleNumber(number) {
+    // to allow us to enter number to continue operand
+    if (previousNumber !== '' && currentNumber !== '' && operator === '') {
+        previousNumber = ''
+        currentOperandTextElement.textContent = currentNumber
+    }
     if (currentNumber.length <= 12) {
         currentNumber += number;
         currentOperandTextElement.textContent = currentNumber;
@@ -45,12 +50,25 @@ operationButtons.forEach(btn => {
 
 // function for operation buttons
 function handleOperator(op) {
-    operator = op;
-    previousNumber = currentNumber;
-    previousOperandTextElement.textContent = previousNumber + ' ' + operator;
-    currentNumber = '';
-    currentOperandTextElement.textContent = '';
+    if (previousNumber === '') {
+        previousNumber = currentNumber;
+        continueOperand(op);
+    } else if (currentNumber === ''){
+        continueOperand(op);
+    } else {
+        calculate();
+        operator = op;
+        currentOperandTextElement.textContent = '';
+        previousOperandTextElement.textContent = previousNumber + ' ' + operator;
+    }
 };
+
+function continueOperand(text) {
+    operator = text;
+    previousOperandTextElement.textContent = previousNumber + ' ' + operator;
+    currentOperandTextElement.textContent = '';
+    currentNumber = '';
+}
 
 function calculate() {
     // convert into numbers
@@ -82,13 +100,14 @@ function roundNumbers(number) {
 }
 
 function displayResults() {
-    previousOperandTextElement.textContent = '';
-    operator = '';
     if (previousNumber.length <= 12) {
         currentOperandTextElement.textContent = previousNumber;
     } else {
         currentOperandTextElement.textContent = previousNumber.slice(0,12) + '...';
     }
+    previousOperandTextElement.textContent = '';
+    operator = '';
+    currentNumber = '';
 };
 
 function allClear() {
