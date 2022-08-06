@@ -37,7 +37,7 @@ operationButtons.forEach(btn => {
 function handleOperator(op) {
     operator = op;
     previousNumber = currentNumber;
-    previousOperandTextElement.textContent = previousNumber;
+    previousOperandTextElement.textContent = previousNumber + ' ' + operator;
     currentNumber = '';
     currentOperandTextElement.textContent = '';
 }
