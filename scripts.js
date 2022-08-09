@@ -92,7 +92,7 @@ function calculate() {
         previousNumber -= currentNumber;
     } else if (operator === '*') {
         previousNumber *= currentNumber;
-    } else if (operator === '÷') {
+    } else if (operator === '÷' || operator === '/') {
         if (currentNumber <= 0) {
             previousNumber = 'Error'
             displayResults();
