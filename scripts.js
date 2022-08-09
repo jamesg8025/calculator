@@ -8,6 +8,14 @@ window.addEventListener('keydown', handleKeyPress);
 const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll('[data-operation]');
 
+const posNegButton = document.querySelector('[data-posNeg]');
+posNegButton.addEventListener('click', posNeg);
+
+// const posNegButton = document.querySelector('[data-posNeg]');
+// posNegButton.addEventListener('click', () => {
+//     currentOperandTextElement.textContent = parseFloat(currentOperandTextElement.textContent) * -1;
+// });
+
 const decimalButton = document.querySelector('[data-decimal]');
 decimalButton.addEventListener('click', () => {
     addDecimal();
@@ -168,4 +176,13 @@ function handleDelete() {
         previousNumber = previousNumber.slice(0, -1);
         currentOperandTextElement.textContent = previousNumber;
     }
+};
+
+function posNeg() {
+    if (currentNumber.indexOf('-') == 0) {
+        currentNumber = currentNumber.substring(1); // removes the first - sign
+    } else {
+        currentNumber = '-' + currentNumber;
+    }
+    currentOperandTextElement.textContent = currentNumber;
 };
