@@ -11,11 +11,6 @@ const operationButtons = document.querySelectorAll('[data-operation]');
 const posNegButton = document.querySelector('[data-posNeg]');
 posNegButton.addEventListener('click', posNeg);
 
-// const posNegButton = document.querySelector('[data-posNeg]');
-// posNegButton.addEventListener('click', () => {
-//     currentOperandTextElement.textContent = parseFloat(currentOperandTextElement.textContent) * -1;
-// });
-
 const decimalButton = document.querySelector('[data-decimal]');
 decimalButton.addEventListener('click', () => {
     addDecimal();
