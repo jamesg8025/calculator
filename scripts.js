@@ -181,7 +181,3 @@ function posNeg() {
     }
     currentOperandTextElement.textContent = currentNumber;
 };
-
-// function posNeg() {
-
-// }
