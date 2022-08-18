@@ -93,7 +93,7 @@ function calculate() {
     } else if (operator === '*') {
         previousNumber *= currentNumber;
     } else if (operator === '÷' || operator === '/') {
-        if (currentNumber <= 0) {
+        if (currentNumber === 0) {
             previousNumber = 'Error'
             displayResults();
             return;
@@ -181,3 +181,7 @@ function posNeg() {
     }
     currentOperandTextElement.textContent = currentNumber;
 };
+
+// function posNeg() {
+
+// }
